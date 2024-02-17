@@ -1,9 +1,17 @@
-import React from 'react'
+"use client";
+
+import Head from "next/head";
+import React from "react";
 
 function Drivers() {
   return (
-    <div>Drivers</div>
-  )
+    <>
+      <Head>
+        <title>Drivers Page</title>
+      </Head>
+      Drivers
+    </>
+  );
 }
 
-export default Drivers
+export default Drivers;

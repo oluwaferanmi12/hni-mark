@@ -1,14 +1,18 @@
+"use client"
+
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
+import { Provider } from "react-redux";
+import { store } from "@/store/store";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
-  title: "HNIPRIME",
-  description: "hniprime",
-};
+// export const metadata: Metadata = {
+//   title: "HNIPRIME",
+//   description: "hniprime",
+// };
 
 export default function RootLayout({
   children,
@@ -18,7 +22,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <AntdRegistry>{children}</AntdRegistry>
+        <Provider store={store}>
+          <AntdRegistry>{children}</AntdRegistry>
+        </Provider>
       </body>
     </html>
   );

@@ -10,8 +10,8 @@ export const NavTextWrapper = ({
 }: WrapperTypes.NavTextWrapperType) => {
   return (
     <div
-      className={`flex items-center ${
-        active ? "bg-[#F7F5F2] border border-[#E4E4E4] rounded-lg p-2" : ""
+      className={`flex rounded-lg p-2 items-center ${
+        active ? "bg-[#F7F5F2] border border-[#E4E4E4]" : ""
       }`}
     >
       <span className="mr-4">

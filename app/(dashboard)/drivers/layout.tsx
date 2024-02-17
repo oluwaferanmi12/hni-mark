@@ -1,19 +1,16 @@
 "use client";
+
 import { handlePageActive } from "@/store/slices/pageActiveSlice";
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
-function Dashboard() {
+const DriverLayout = ({ children }: { children: React.ReactNode }) => {
   const dispatch = useDispatch();
-  useEffect(() => {
-    //handle the active page
-    dispatch(handlePageActive("dashboard"));
-  }, []);
-  return (
-    <>
-      <div>Dashboard</div>
-    </>
-  );
-}
 
-export default Dashboard;
+  useEffect(() => {
+    dispatch(handlePageActive("drivers"));
+  }, []);
+  return <>{children}</>;
+};
+
+export default DriverLayout;
