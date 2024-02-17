@@ -14,7 +14,7 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       colors: {
-        hblue50: "#E6E6F3",
+        hblue50:  "#E6E6F3",
         hblue100: "#B1B1DA",
         hblue200: "#8B8BC9",
         hblue300: "#5656B0",
@@ -24,7 +24,7 @@ const config: Config = {
         hblue700: "#020261",
         hblue800: "#02024B",
         hblue900: "#01013A",
-        hgrey50: "#E7E7E7",
+        hgrey50:  "#E7E7E7",
         hgrey100: "#B6B6B6",
         hgrey200: "#929292",
         hgrey300: "#616161",
