@@ -18,7 +18,7 @@ export const NavTextWrapper = ({
       <span className="mr-4">
         <Image src={icon} alt="" />
       </span>
-      <Atoms.Text.NavText text={text} active={false} />
+      <Atoms.Text.NavText text={text} active={active} />
     </div>
   );
 };
