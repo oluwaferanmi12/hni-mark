@@ -3,5 +3,6 @@ export interface GInputType {
     type: 'text' | 'number';
     placeholer: string;
     name: string;
-    handler?: (val: any) => void
+    handler?: (val: any) => void;
+    error?: string;
 }
