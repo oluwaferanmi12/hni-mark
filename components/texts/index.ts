@@ -1,1 +1,0 @@
-export { NavText } from "@/components/texts/navText";
