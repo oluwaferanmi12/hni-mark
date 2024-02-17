@@ -1,4 +1,5 @@
-import { NavText } from "@/components/texts";
+
+import { Atoms } from "@/components";
 import { WrapperTypes } from "@/types";
 import Image from "next/image";
 import React from "react";
@@ -17,7 +18,7 @@ export const NavTextWrapper = ({
       <span className="mr-4">
         <Image src={icon} alt="" />
       </span>
-      <NavText text={text} active={false} />
+      <Atoms.Text.NavText text={text} active={false} />
     </div>
   );
 };
