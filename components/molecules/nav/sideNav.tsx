@@ -2,8 +2,8 @@ import React from "react";
 import logo from "@/public/assets/svgs/logo.svg";
 import Image from "next/image";
 import { navData } from "@/utils/navData";
-import { Atoms, Molecules } from "@/components";
 import Link from "next/link";
+import { NavTextWrapper } from "@/components/molecules/wrappers";
 
 export const SideNav = () => {
   return (
@@ -16,7 +16,7 @@ export const SideNav = () => {
           return (
             <div key={index} className="my-4">
               <Link href={item.url}>
-                <Molecules.Wrappers.NavTextWrapper
+                <NavTextWrapper
                   icon={item.iconActive}
                   active
                   text={item.name}
