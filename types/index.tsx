@@ -1,2 +1,5 @@
-export type * as TextTypes from "@/types/textTypes";
-export type * as WrapperTypes from "@/types/wrapperTypes";
+export type { InputTextType } from "@/types/textTypes";
+export type { NavTextWrapperType } from "@/types/wrapperTypes";
+export type { DashBoardNavType } from "@/types/dashboardNavType";
+export type { GeneralTextType } from "@/types/generalTextType";
+export type { GInputType } from "@/types/GInputType";

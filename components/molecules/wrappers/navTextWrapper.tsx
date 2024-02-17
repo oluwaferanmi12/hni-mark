@@ -1,5 +1,6 @@
 import { NavText } from "@/components/atoms/texts";
-import { WrapperTypes } from "@/types";
+import { NavTextWrapperType } from "@/types";
+
 import Image from "next/image";
 import React from "react";
 
@@ -7,7 +8,7 @@ export const NavTextWrapper = ({
   icon,
   active,
   text,
-}: WrapperTypes.NavTextWrapperType) => {
+}: NavTextWrapperType) => {
   return (
     <div
       className={`flex rounded-lg p-2 items-center ${

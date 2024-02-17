@@ -11,7 +11,6 @@ import { RootState } from "@/store/store";
 
 export const SideNav = () => {
   const pageActive = useSelector((state: RootState) => state.pageActive);
-  console.log(pageActive);
   return (
     <div className="max-w-[300px] w-[300px] py-8 px-4 border h-screen min-h-screen">
       <div className="mb-8">

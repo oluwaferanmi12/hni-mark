@@ -1,11 +1,13 @@
-import React from 'react'
+import React from "react";
 
-const Login= () => {
+const Login = () => {
   return (
-    <div>
-        login
+    <div className="h-screen bg-hblue50  flex w-full items-center justify-center">
+      <div>
+        
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;

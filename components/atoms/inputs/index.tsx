@@ -1,0 +1,1 @@
+export { GInput } from "@/components/atoms/inputs/GInput";
