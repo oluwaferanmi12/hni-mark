@@ -2,9 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+@font-face {
+  font-family: gtAlplina;
+  src: url("../fonts/GTAlpina-Light.otf");
+}
+
+@font-face {
+  font-family: ttPro;
+  src: url("../fonts/TT\ Commons\ Pro\ Normal.otf");
+}
+
+@font-face {
+  font-family: robotoCondensed;
+  src: url("../fonts/RobotoCondensed-Regular.ttf");
+}
+
+@font-face {
+  font-family: roboto;
+  src: url("../fonts/Roboto-Regular.ttf");
 }

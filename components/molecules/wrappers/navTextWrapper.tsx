@@ -11,7 +11,7 @@ export const NavTextWrapper = ({
 }: NavTextWrapperType) => {
   return (
     <div
-      className={`flex rounded-lg p-2 items-center ${
+      className={`flex font-roboto rounded-lg p-2 items-center ${
         active ? "bg-[#F7F5F2] border border-[#E4E4E4]" : ""
       }`}
     >
