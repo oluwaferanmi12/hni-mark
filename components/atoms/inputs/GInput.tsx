@@ -15,7 +15,7 @@ export const GInput = ({
         <input
           placeholder={placeholder}
           name={name}
-          className={`w-full px-4 py-3 rounded-lg border border-[#D0D5DD]`}
+          className={`w-full px-4  outline-none focus:border-hgrey100 focus:border-2 py-3 rounded-lg border border-[#D0D5DD]`}
         />
       </span>
       <div className="text-red-400">{error}</div>
