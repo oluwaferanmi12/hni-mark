@@ -12,6 +12,7 @@ const config: Config = {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        dashboardBackground: "./public/assets/svgs/background-is.svg"
       },
       colors: {
         hblue50: "#E6E6F3",
@@ -40,7 +41,8 @@ const config: Config = {
         ttPro: ['ttPro', "sans-serif"],
         robotoCondensed: ['robotoCondensed', "sans-serif"],
         roboto: ['roboto', "sans-serif"],
-      }
+      } , 
+    
     },
   },
   plugins: [],
