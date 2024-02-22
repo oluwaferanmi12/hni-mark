@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -21,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="font-roboto" >
+      <body className="font-roboto w-full">
         <Provider store={store}>
           <AntdRegistry>{children}</AntdRegistry>
         </Provider>
