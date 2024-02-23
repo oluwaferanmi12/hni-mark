@@ -1,3 +1,4 @@
+"use client"
 import { Col, Row } from "antd";
 import React from "react";
 import logo from "@/public/assets/svgs/logoRounded.svg";

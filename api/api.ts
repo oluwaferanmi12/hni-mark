@@ -24,7 +24,7 @@ export const apiCall = async (url: string, method: 'get' | "post" | 'delete' | '
         await apiInstance.post(url, body ?? {}).then((data) => {
             console.log(data)
         }).catch(e => {
-            console.log(e)
+            console.log(e , "Error inside this place")
         })
     }
     else if (method === "get") {
