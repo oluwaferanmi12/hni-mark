@@ -21,9 +21,7 @@ const Login = () => {
       password: data.password,
       userName: data.email,
     })
-      .then((res) => {
-        
-      })
+      .then((res) => {})
       .catch((e) => console.log(e))
       .finally(() => {
         setBLoading(false);
@@ -51,13 +49,13 @@ const Login = () => {
                 <GInput
                   label="Password"
                   placeholder="Enter password"
-                  type="text"
+                  type="password"
                   name="password"
                 />
                 <Link href={"/forgot-password"}>
-                  <p className="text-[#667085] font-semibold font-roboto underline">
+                  <span className="text-[#667085] font-semibold font-roboto underline">
                     Forgot Password?
-                  </p>
+                  </span>
                 </Link>
                 <FormSubmitButton text="Login" disabled={bLoading} />
 

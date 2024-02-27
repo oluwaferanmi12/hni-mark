@@ -65,7 +65,7 @@ const Register = () => {
               <GInput
                 label="Password"
                 placeholder="Enter password"
-                type="text"
+                type="password"
                 name="password"
               />
 

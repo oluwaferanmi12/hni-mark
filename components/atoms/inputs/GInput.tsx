@@ -4,7 +4,7 @@ import React from "react";
 export const GInput = ({
   label,
   placeholder,
-  type,
+  type = "text",
   name,
   error = "",
 }: GInputType) => {
@@ -15,6 +15,7 @@ export const GInput = ({
         <input
           placeholder={placeholder}
           name={name}
+          type={type}
           className={`w-full px-4  outline-none focus:border-hgrey100 focus:border-2 py-3 rounded-lg border border-[#D0D5DD]`}
         />
       </span>
