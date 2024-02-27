@@ -1,13 +1,34 @@
+"use client";
 import { Col, Row } from "antd";
-import React from "react";
+import React, { useState } from "react";
 import logo from "@/public/assets/svgs/logoRounded.svg";
 import Image from "next/image";
 import { FormHeaderText } from "@/components/atoms/texts";
 import { FormSubmitButton, GInput } from "@/components/atoms/inputs";
 import Link from "next/link";
 import rightIcon from "@/public/assets/svgs/rightIconBlack.svg";
+import { apiCall } from "@/api/api";
 
 const Register = () => {
+  const [bLoading, setBLoading] = useState(false);
+  const handleRegister = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setBLoading(true);
+    const data = Object.fromEntries(new FormData(e.currentTarget));
+    apiCall("Account/Business/Register", "post", {
+      ...data,
+      serviceId: "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((e) => {
+        console.log(e);
+      })
+      .finally(() => {
+        setBLoading(false);
+      });
+  };
   return (
     <div className="h-screen bg-hblue50   flex w-full  items-center justify-center">
       <Row align={"middle"} justify={"center"} className="w-full">
@@ -16,31 +37,40 @@ const Register = () => {
             <div className="flex justify-center mb-3">
               <Image src={logo} alt="" />
             </div>
-            <div className="mb-8">
-              <FormHeaderText text="Sign up" />
-            </div>
+            <form onSubmit={handleRegister}>
+              <div className="mb-8">
+                <FormHeaderText text="Sign up" />
+              </div>
 
-            <GInput
-              label="Email"
-              placeholder="Enter email"
-              type="text"
-              name="email"
-            />
+              <GInput
+                label="Email"
+                placeholder="Enter email"
+                type="text"
+                name="email"
+              />
 
-            <GInput
-              label="Business name"
-              placeholder="Enter business name"
-              type="text"
-              name="business_name"
-            />
-            <GInput
-              label="Password"
-              placeholder="Enter password"
-              type="text"
-              name="password"
-            />
+              <GInput
+                label="Phone number"
+                placeholder="Enter phone number"
+                type="text"
+                name="phone"
+              />
 
-            <FormSubmitButton text="Register" disabled={false} />
+              <GInput
+                label="Business name"
+                placeholder="Enter business name"
+                type="text"
+                name="businessName"
+              />
+              <GInput
+                label="Password"
+                placeholder="Enter password"
+                type="text"
+                name="password"
+              />
+
+              <FormSubmitButton text="Register" disabled={bLoading} />
+            </form>
 
             <div className="flex justify-center items-center">
               <p className="font-roboto mr-6">Already have an account?</p>

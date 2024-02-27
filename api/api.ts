@@ -3,8 +3,8 @@ import axios from "axios";
 const apiInstance = axios.create({ baseURL: process.env.NEXT_PUBLIC_BASE_URL });
 
 apiInstance.interceptors.request.use(function (config) {
-    const bearer = "";
-    config.headers.Authorization = bearer ? bearer : "";
+    // const bearer = "";
+    // config.headers.Authorization = bearer ? bearer : "";
     config.headers["Content-Type"] = 'application/json-patch+json'
     return config
 }, function (error) {
@@ -20,12 +20,8 @@ apiInstance.interceptors.response.use(function (response) {
 
 export const apiCall = async (url: string, method: 'get' | "post" | 'delete' | 'put', body: any) => {
     if (method === "post") {
-        console.log("Got in here")
-        await apiInstance.post(url, body ?? {}).then((data) => {
-            console.log(data)
-        }).catch(e => {
-            console.log(e , "Error inside this place")
-        })
+        console.log("Got into post hereee")
+        return await apiInstance.post(url, body)
     }
     else if (method === "get") {
         return await apiInstance.get(url)

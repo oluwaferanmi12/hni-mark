@@ -9,6 +9,7 @@ import { FormSubmitButton, GInput } from "@/components/atoms/inputs";
 import Link from "next/link";
 import rightIcon from "@/public/assets/svgs/rightIconBlack.svg";
 import { apiCall } from "@/api/api";
+import { Toaster, toast } from "sonner";
 
 const Login = () => {
   const [bLoading, setBLoading] = useState(false);
@@ -16,12 +17,13 @@ const Login = () => {
     e.preventDefault();
     setBLoading(true);
     const data = Object.fromEntries(new FormData(e.currentTarget));
-    console.log(data);
     apiCall("Account/login", "post", {
       password: data.password,
       userName: data.email,
     })
-      .then((e) => {})
+      .then((res) => {
+        
+      })
       .catch((e) => console.log(e))
       .finally(() => {
         setBLoading(false);
