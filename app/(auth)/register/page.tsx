@@ -23,7 +23,6 @@ const Register = () => {
         console.log(res);
       })
       .catch((e) => {
-        console.log(e);
       })
       .finally(() => {
         setBLoading(false);

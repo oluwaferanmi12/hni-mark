@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "sonner";
 
 const apiInstance = axios.create({ baseURL: process.env.NEXT_PUBLIC_BASE_URL });
 
@@ -15,6 +16,8 @@ apiInstance.interceptors.response.use(function (response) {
     //CHeck the format and see what to do with the response sent;
     return response;
 }, function (error) {
+    const errorVal = error?.response?.data?.message
+    toast.error(errorVal ?? "Oops! An error Occured")
     return Promise.reject(error)
 });
 
