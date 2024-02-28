@@ -8,6 +8,8 @@ import { FormSubmitButton, GInput } from "@/components/atoms/inputs";
 import Link from "next/link";
 import rightIcon from "@/public/assets/svgs/rightIconBlack.svg";
 import { apiCall } from "@/api/api";
+import { RegisterType } from "@/types";
+import { toast } from "sonner";
 
 const Register = () => {
   const [bLoading, setBLoading] = useState(false);
@@ -15,15 +17,24 @@ const Register = () => {
   const [phoneError, setPhoneError] = useState("");
   const [bNameError, setBNameError] = useState("");
   const [passwordError, setPasswordError] = useState("");
+
+  const validateData = ({
+    businessName,
+    email,
+    password,
+    phone,
+  }: RegisterType) => {};
   const handleRegister = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setBLoading(true);
     const data = Object.fromEntries(new FormData(e.currentTarget));
+    // const validate = validateData({businessName: data.businessName,});
     apiCall("Account/Business/Register", "post", {
       ...data,
-      serviceId: "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      serviceId: "d283999f-1d0e-4a24-9e61-b99f90b3bb48",
     })
       .then((res) => {
+        toast.success("Otp Sent Successfully");
         console.log(res);
       })
       .catch((e) => {})
@@ -72,6 +83,7 @@ const Register = () => {
                 placeholder="Enter password"
                 type="password"
                 name="password"
+                inputError={passwordError}
               />
 
               <FormSubmitButton text="Register" disabled={bLoading} />
