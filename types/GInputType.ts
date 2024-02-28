@@ -6,4 +6,5 @@ export interface GInputType {
     handler?: (val: any) => void;
     error?: string;
     passwordTypHandler?: (value: boolean) => void;
+    inputError: string;
 }

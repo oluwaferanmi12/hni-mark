@@ -17,13 +17,12 @@ apiInstance.interceptors.response.use(function (response) {
     return response;
 }, function (error) {
     const errorVal = error?.response?.data?.message
-    toast.error(errorVal ?? "Oops! An error Occured")
+    toast.error(errorVal ?? "Oops! An error Occured,Try again...")
     return Promise.reject(error)
 });
 
 export const apiCall = async (url: string, method: 'get' | "post" | 'delete' | 'put', body: any) => {
     if (method === "post") {
-        console.log("Got into post hereee")
         return await apiInstance.post(url, body)
     }
     else if (method === "get") {

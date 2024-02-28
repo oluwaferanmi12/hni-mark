@@ -11,6 +11,10 @@ import { apiCall } from "@/api/api";
 
 const Register = () => {
   const [bLoading, setBLoading] = useState(false);
+  const [emailError, setEmailError] = useState("");
+  const [phoneError, setPhoneError] = useState("");
+  const [bNameError, setBNameError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
   const handleRegister = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setBLoading(true);
@@ -22,8 +26,7 @@ const Register = () => {
       .then((res) => {
         console.log(res);
       })
-      .catch((e) => {
-      })
+      .catch((e) => {})
       .finally(() => {
         setBLoading(false);
       });
@@ -31,7 +34,7 @@ const Register = () => {
   return (
     <div className="h-screen bg-hblue50   flex w-full  items-center justify-center">
       <Row align={"middle"} justify={"center"} className="w-full">
-        <Col xs={22} sm={16} md={12} lg={8} xl={6}>
+        <Col xs={22} sm={16} md={12} lg={12} xl={8}>
           <div className="bg-white p-8 rounded-lg shadow-md min-w-full w-full block">
             <div className="flex justify-center mb-3">
               <Image src={logo} alt="" />
@@ -46,6 +49,7 @@ const Register = () => {
                 placeholder="Enter email"
                 type="text"
                 name="email"
+                inputError={emailError}
               />
 
               <GInput
@@ -53,6 +57,7 @@ const Register = () => {
                 placeholder="Enter phone number"
                 type="text"
                 name="phone"
+                inputError={phoneError}
               />
 
               <GInput
@@ -60,6 +65,7 @@ const Register = () => {
                 placeholder="Enter business name"
                 type="text"
                 name="businessName"
+                inputError={bNameError}
               />
               <GInput
                 label="Password"

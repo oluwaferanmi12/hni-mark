@@ -31,7 +31,7 @@ const Login = () => {
     <>
       <div className="h-screen bg-hblue50   flex w-full  items-center justify-center">
         <Row align={"middle"} justify={"center"} className="w-full">
-          <Col xs={22} sm={16} md={12} lg={8} xl={6}>
+          <Col xs={22} sm={16} md={12} lg={12} xl={8}>
             <form onSubmit={handleLogin}>
               <div className="bg-white p-8 rounded-lg shadow-md min-w-full w-full block">
                 <div className="flex justify-center mb-3">
