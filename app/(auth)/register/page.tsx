@@ -10,11 +10,12 @@ import rightIcon from "@/public/assets/svgs/rightIconBlack.svg";
 import { apiCall } from "@/api/api";
 import { RegisterType } from "@/types";
 import { toast } from "sonner";
-import { useRouter } from "next/router";
 import { validateEmail } from "@/utils/emailValidate";
 import { AuthFormWrapper } from "@/components/molecules/wrappers";
+import { useRouter } from "next/navigation";
 
 const Register = () => {
+  const router = useRouter();
   const [bLoading, setBLoading] = useState(false);
   const [emailError, setEmailError] = useState("");
   const [phoneError, setPhoneError] = useState("");
@@ -72,7 +73,12 @@ const Register = () => {
       serviceId: "d283999f-1d0e-4a24-9e61-b99f90b3bb48",
     })
       .then((res) => {
+        localStorage.setItem(
+          "businessPayload",
+          JSON.stringify({ ...res?.data, email: data.email })
+        );
         toast.success("Otp Sent Successfully");
+        router.push("/otp");
       })
       .catch((e) => {})
       .finally(() => {

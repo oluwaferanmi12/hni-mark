@@ -7,8 +7,11 @@ import { AuthFormWrapper } from "@/components/molecules/wrappers";
 import { FormHeaderText } from "@/components/atoms/texts";
 import { FormSubmitButton } from "@/components/atoms/inputs";
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
+import { apiCall } from "@/api/api";
 
 const OtpPage = () => {
+  const router = useRouter();
   const [otpVal, setOtpValue] = useState(["", "", "", "", "", ""]);
   const [bLoading, setBLoading] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -61,8 +64,29 @@ const OtpPage = () => {
       setBLoading(false);
       return;
     }
-    console.log(otpVal);
+    const lData = JSON.parse(localStorage.getItem("businessPayload") || "");
+    apiCall("Account/VerifyAccount", "post", {
+      otp: newString,
+      reference: lData.reference,
+      recipient: lData.email,
+      username: lData.email,
+      mode: "email",
+    })
+      .then((res) => {
+        console.log(res?.data);
+        localStorage.removeItem("businessPayload");
+      })
+      .catch((e) => {
+        console.log(e);
+      })
+      .finally(() => setBLoading(false));
   };
+
+  useEffect(() => {
+    if (!localStorage.getItem("businessPayload")) {
+      router.push("/register");
+    }
+  }, []);
   return (
     <AuthFormWrapper>
       <div className="mb-8">
