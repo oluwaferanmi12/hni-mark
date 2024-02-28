@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { Col, Row } from "antd";
 import React from "react";
 import logo from "@/public/assets/svgs/logoRounded.svg";
@@ -7,32 +7,24 @@ import { FormHeaderText } from "@/components/atoms/texts";
 import { FormSubmitButton, GInput } from "@/components/atoms/inputs";
 import Link from "next/link";
 import rightIcon from "@/public/assets/svgs/rightIconBlack.svg";
+import { AuthFormWrapper } from "@/components/molecules/wrappers";
 
 const Register = () => {
   return (
-    <div className="h-screen bg-hblue50   flex w-full  items-center justify-center">
-      <Row align={"middle"} justify={"center"} className="w-full">
-        <Col xs={22} sm={16} md={12} lg={12} xl={8}>
-          <div className="bg-white p-8 rounded-lg shadow-md min-w-full w-full block">
-            <div className="flex justify-center mb-3">
-              <Image src={logo} alt="" />
-            </div>
-            <div className="mb-8">
-              <FormHeaderText text="Recover Password" />
-            </div>
+    <AuthFormWrapper>
+      <div className="mb-8">
+        <FormHeaderText text="Recover Password" />
+      </div>
 
-            <GInput
-              label="Email"
-              placeholder="Enter email associated with account"
-              type="text"
-              name="email"
-            />
+      <GInput
+        label="Email"
+        placeholder="Enter email associated with account"
+        type="text"
+        name="email"
+      />
 
-            <FormSubmitButton text="Submit" disabled={false} />
-          </div>
-        </Col>
-      </Row>
-    </div>
+      <FormSubmitButton text="Submit" disabled={false} />
+    </AuthFormWrapper>
   );
 };
 
