@@ -1,0 +1,1 @@
+export { TableFilters } from "@/components/molecules/filters/tableFilter";

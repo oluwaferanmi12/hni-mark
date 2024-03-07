@@ -1,11 +1,25 @@
 import { apiCall } from "@/api/api";
 import { TableEmpty, TableLoading } from "@/components/atoms/tables";
+import { TableFilters } from "@/components/molecules/filters";
+import { TableWrapper } from "@/components/molecules/wrappers";
+import { Col, Row } from "antd";
 import React from "react";
 import { useState, useEffect } from "react";
+
+const tableFilter = [
+  "Date",
+  "Name",
+  "Booking Date",
+  "Car Name",
+  "Model",
+  "Price",
+  "Booking hours",
+];
 
 export const OrdersTable = () => {
   const [tableLoading, setTableLoading] = useState(true);
   const [orders, setOrders] = useState<any>([]);
+  const [active, setActive] = useState(0);
   const getOrders = () => {
     apiCall("/Orders", "get")
       .then((res) => {
@@ -34,14 +48,30 @@ export const OrdersTable = () => {
   }, []);
 
   return (
-    <>
+    <TableWrapper>
       {tableLoading ? (
         <TableLoading />
       ) : orders.length === 0 ? (
         <TableEmpty />
       ) : (
-        "Table data"
+        <>
+          <TableFilters
+            filterList={[
+              "All bookings",
+              "Available vehicles",
+              "Booked vehicles",
+              "Archive",
+            ]}
+            handleActive={setActive}
+            active={active}
+          />
+          <Row>
+            {tableFilter.map((item, index) => {
+              return <Col key={index}></Col>;
+            })}
+          </Row>
+        </>
       )}
-    </>
+    </TableWrapper>
   );
 };
