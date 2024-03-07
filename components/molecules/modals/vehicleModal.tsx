@@ -11,7 +11,7 @@ export const VehicleModal = ({ handleClose }: VehicleModalType) => {
   return (
     <>
       <ModalWrapper handleInactive={handleClose} />
-      <div className="rounded-lg border   w-full fixed left-0 z-20 px-6 py-4  h-screen flex justify-center">
+      <div className="rounded-lg   w-full fixed left-0 z-20 px-6 py-4  h-screen flex justify-center">
         <div className="w-[500px] bg-white py-4 px-6 rounded-lg  min-h-[600px] h-[600px] max-h-screen">
           <div className="flex justify-between items-center ">
             <span>

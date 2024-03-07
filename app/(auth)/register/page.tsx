@@ -1,6 +1,6 @@
 "use client";
 import { Col, Row } from "antd";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import logo from "@/public/assets/svgs/logoRounded.svg";
 import Image from "next/image";
 import { FormHeaderText } from "@/components/atoms/texts";
@@ -22,9 +22,14 @@ const Register = () => {
   const [bNameError, setBNameError] = useState("");
   const [passwordError, setPasswordError] = useState("");
 
+  const getServices = () => {
+    apiCall("Products/Services", "get").then((res) => {
+      console.log(res?.data);
+    });
+  };
+
   const validateData = (data: any): boolean => {
     let errorFound = 0;
-    console.log("Got inside validataion");
     if (!data.email) {
       setEmailError("Email is required");
       errorFound = 1;
@@ -85,6 +90,10 @@ const Register = () => {
         setBLoading(false);
       });
   };
+
+  useEffect(() => {
+    getServices();
+  }, []);
   return (
     <AuthFormWrapper>
       <form onSubmit={handleRegister}>
