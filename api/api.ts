@@ -4,8 +4,10 @@ import { toast } from "sonner";
 const apiInstance = axios.create({ baseURL: process.env.NEXT_PUBLIC_BASE_URL });
 
 apiInstance.interceptors.request.use(function (config) {
-    // const bearer = "";
-    // config.headers.Authorization = bearer ? bearer : "";
+    const tokenPayload = JSON.parse(localStorage.getItem("access_payload") ?? "");
+    console.log(tokenPayload, "token Payload heree")
+    const bearer = tokenPayload.token;
+    config.headers.Authorization = bearer ? `bearer ${bearer}` : "";
     config.headers["Content-Type"] = 'application/json-patch+json'
     return config
 }, function (error) {
@@ -16,12 +18,19 @@ apiInstance.interceptors.response.use(function (response) {
     //CHeck the format and see what to do with the response sent;
     return response;
 }, function (error) {
-    const errorVal = error?.response?.data?.message
+    console.log(error?.response?.status, "Value of eerror found")
+    let errorVal = error?.response?.data?.message
+    console.log(errorVal, "Value heree")
+    if (error?.response?.status === 401) {
+        // window.location.href = "/login";
+        localStorage.removeItem("access_payload")
+        errorVal = "Unauthorized Access"
+    }
     toast.error(errorVal ?? "Oops! An error Occured,Try again...")
     return Promise.reject(error)
 });
 
-export const apiCall = async (url: string, method: 'get' | "post" | 'delete' | 'put', body: any) => {
+export const apiCall = async (url: string, method: 'get' | "post" | 'delete' | 'put', body?: any) => {
     if (method === "post") {
         return await apiInstance.post(url, body)
     }
