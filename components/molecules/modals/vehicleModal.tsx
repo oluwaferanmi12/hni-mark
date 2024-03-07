@@ -30,16 +30,16 @@ export const VehicleModal = ({ handleClose }: VehicleModalType) => {
 
           <form onSubmit={handleSubmit}>
             <GInput
-              name="name"
+              name="Name"
               label="Name"
               type="text"
-              placeholder="Vehicle Name"
+              placeholder="Enter car name"
             />
             <GInput
-              name="name"
-              label="Name"
+              name="description"
+              label="Description"
               type="text"
-              placeholder="Vehicle Name"
+              placeholder="Enter description"
             />
             <GInput
               name="name"

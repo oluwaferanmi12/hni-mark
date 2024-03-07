@@ -9,15 +9,13 @@ export interface GInputType {
     inputError?: string;
 }
 
-type OptionType{
+interface OptionType{
     value: string;
     selectLabel: string;
 }
 
 export interface GSelectType {
     label: string;
-    type: 'text' | 'number' | 'password';
-    placeholder: string;
     name: string;
     handler?: (val: any) => void;
     error?: string;

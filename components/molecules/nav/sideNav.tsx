@@ -12,9 +12,7 @@ import { useSpring } from "@react-spring/web";
 
 export const SideNav = () => {
   const pageActive = useSelector((state: RootState) => state.pageActive);
-  const [styles, api] = useSpring(() => ({
-    from: { x: 0 },
-  }));
+
   return (
     <div className="max-w-[300px] w-[300px] py-8 px-4 border h-screen min-h-screen">
       <div className="mb-8">
@@ -26,6 +24,7 @@ export const SideNav = () => {
             <div key={index} className="my-4">
               <Link href={item.url}>
                 <NavTextWrapper
+                  pageActive={pageActive}
                   icon={
                     pageActive == item.alias
                       ? item.iconActive
@@ -33,6 +32,7 @@ export const SideNav = () => {
                   }
                   active={pageActive === item.alias}
                   text={item.name}
+                  currentIndex={index}
                 />
               </Link>
             </div>

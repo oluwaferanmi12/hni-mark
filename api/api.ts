@@ -4,9 +4,7 @@ import { toast } from "sonner";
 const apiInstance = axios.create({ baseURL: process.env.NEXT_PUBLIC_BASE_URL });
 
 apiInstance.interceptors.request.use(function (config) {
-    console.log("Got in hereee")
     const tokenPayload = JSON.parse(localStorage.getItem("access_payload") ?? "{}");
-    console.log(tokenPayload, "token Payload heree")
     const bearer = tokenPayload.token;
     if (bearer) {
 
