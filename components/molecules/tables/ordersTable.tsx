@@ -11,6 +11,7 @@ import arrowLeft from "@/public/assets/svgs/arrowLeft.svg";
 import reloadButton from "@/public/assets/svgs/reload.svg";
 import Image from "next/image";
 import threeDots from "@/public/assets/svgs/tdots.svg";
+import { BookingModal } from "@/components/molecules/modals";
 
 interface OrdersType {
   date: string;
@@ -37,6 +38,7 @@ export const OrdersTable = () => {
   const [tableLoading, setTableLoading] = useState(true);
   const [orders, setOrders] = useState<OrdersType[]>([]);
   const [active, setActive] = useState(0);
+  const [showBookingModal, setShowBookingModal] = useState(false);
   const getOrders = () => {
     apiCall("/Orders", "get")
       .then((res) => {
@@ -74,93 +76,102 @@ export const OrdersTable = () => {
   }, []);
 
   return (
-    <TableWrapper>
-      {tableLoading ? (
-        <TableLoading />
-      ) : orders.length === 0 ? (
-        <TableEmpty />
-      ) : (
-        <>
-          <TableFilters
-            filterList={[
-              "All bookings",
-              "Available vehicles",
-              "Booked vehicles",
-              "Archive",
-            ]}
-            handleActive={setActive}
-            active={active}
-          />
-          <div
-            className="my-6 flex justify-between
+    <>
+      {showBookingModal && <BookingModal handleClose={setShowBookingModal} />}
+
+      <TableWrapper>
+        {tableLoading ? (
+          <TableLoading />
+        ) : orders.length === 0 ? (
+          <TableEmpty />
+        ) : (
+          <>
+            <TableFilters
+              filterList={[
+                "All bookings",
+                "Available vehicles",
+                "Booked vehicles",
+                "Archive",
+              ]}
+              handleActive={setActive}
+              active={active}
+            />
+            <div
+              className="my-6 flex justify-between
            items-center"
-          >
-            <SearchInput />
-            <div className="flex items-center gap-4 text-[#475467]">
-              <span>
-                <Image src={reloadButton} alt="" />
-              </span>
-              <span>1 - 50 of 2,500</span>
-              <span className="flex items-center gap-4">
+            >
+              <SearchInput />
+              <div className="flex items-center gap-4 text-[#475467]">
                 <span>
-                  <Image src={arrowLeft} alt="" />
+                  <Image src={reloadButton} alt="" />
                 </span>
-                <span>1 - 10</span>
-                <span>
-                  <Image src={arrowRight} alt="" />
-                </span>
-              </span>
-            </div>
-          </div>
-          <Row className="bg-[#FCFCFD] py-4 px-3">
-            {tableFilter.map((item, index) => {
-              return (
-                <Col xs={item.size} key={index}>
-                  <span className="text-[#667085] text-sm font-semibold">
-                    {item.heading}
+                <span>1 - 50 of 2,500</span>
+                <span className="flex items-center gap-4">
+                  <span>
+                    <Image src={arrowLeft} alt="" />
                   </span>
-                </Col>
-              );
-            })}
-          </Row>
-          {/* //TODO: We need two table states (Empty and filled states) , the one */}
-          {/* for showing all data and another to filter by date or status */}
-          <div>
-            {orders.map((item, index) => {
-              return (
-                <Row key={index} className="py-4 px-3 text-[#475467]">
-                  <Col xs={tableFilter[0].size}>
-                    <span>{item.date}</span>
-                  </Col>
-                  <Col xs={tableFilter[1].size}>
-                    <span>{item.name}</span>
-                  </Col>
-                  <Col xs={tableFilter[2].size}>
-                    <span>{item.bDate}</span>
-                  </Col>{" "}
-                  <Col xs={tableFilter[3].size}>
-                    <span>{item.cName}</span>
-                  </Col>{" "}
-                  <Col xs={tableFilter[4].size}>
-                    <span>{item.model}</span>
-                  </Col>{" "}
-                  <Col xs={tableFilter[5].size}>
-                    <span>{item.price}</span>
-                  </Col>{" "}
-                  <Col xs={tableFilter[6].size}>
-                    <span>{item.bHours}</span>
-                  </Col>{" "}
-                  <Col xs={tableFilter[7].size}>
-                    <span>
-                      <Image src={threeDots} alt="" />
+                  <span>1 - 10</span>
+                  <span>
+                    <Image src={arrowRight} alt="" />
+                  </span>
+                </span>
+              </div>
+            </div>
+            <Row className="bg-[#FCFCFD] py-4 px-3">
+              {tableFilter.map((item, index) => {
+                return (
+                  <Col xs={item.size} key={index}>
+                    <span className="text-[#667085] text-sm font-semibold">
+                      {item.heading}
                     </span>
-                  </Col>{" "}
-                </Row>
-              );
-            })}
-          </div>
-        </>
-      )}
-    </TableWrapper>
+                  </Col>
+                );
+              })}
+            </Row>
+            {/* //TODO: We need two table states (Empty and filled states) , the one */}
+            {/* for showing all data and another to filter by date or status */}
+            <div>
+              {orders.map((item, index) => {
+                return (
+                  <Row key={index} className="py-4 px-3 text-[#475467]">
+                    <Col xs={tableFilter[0].size}>
+                      <span>{item.date}</span>
+                    </Col>
+                    <Col xs={tableFilter[1].size}>
+                      <span>{item.name}</span>
+                    </Col>
+                    <Col xs={tableFilter[2].size}>
+                      <span>{item.bDate}</span>
+                    </Col>{" "}
+                    <Col xs={tableFilter[3].size}>
+                      <span>{item.cName}</span>
+                    </Col>{" "}
+                    <Col xs={tableFilter[4].size}>
+                      <span>{item.model}</span>
+                    </Col>{" "}
+                    <Col xs={tableFilter[5].size}>
+                      <span>{item.price}</span>
+                    </Col>{" "}
+                    <Col xs={tableFilter[6].size}>
+                      <span>{item.bHours}</span>
+                    </Col>{" "}
+                    <Col xs={tableFilter[7].size}>
+                      <span>
+                        <Image
+                          onClick={() => setShowBookingModal(true)}
+                          className="cursor-pointer"
+                          src={threeDots}
+                          alt=""
+                        />
+                      </span>
+                    </Col>{" "}
+                  </Row>
+                );
+              })}
+            </div>
+          </>
+        )}
+      </TableWrapper>
+    </>
   );
 };
