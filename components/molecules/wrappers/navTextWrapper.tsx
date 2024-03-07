@@ -19,7 +19,7 @@ export const NavTextWrapper = ({ icon, active, text }: NavTextWrapperType) => {
           border: "none",
           color: "#131313",
         },
-        to: { backgroundColor: "#F7F5F2", border: "#E4E4E4", color: "#030389" },
+        to: { backgroundColor: "#000", border: "#E4E4E4", color: "#E7E7E7" },
       });
     } else {
       api.start({
@@ -33,7 +33,7 @@ export const NavTextWrapper = ({ icon, active, text }: NavTextWrapperType) => {
   }, [active]);
   return (
     <animated.div
-      className={`flex font-roboto rounded-lg p-2 items-center`}
+      className={`flex font-roboto rounded-lg p-3 items-center`}
       style={styles}
     >
       <span className="mr-4">
