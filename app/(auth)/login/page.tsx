@@ -11,8 +11,10 @@ import rightIcon from "@/public/assets/svgs/rightIconBlack.svg";
 import { apiCall } from "@/api/api";
 import { Toaster, toast } from "sonner";
 import { AuthFormWrapper } from "@/components/molecules/wrappers";
+import { useRouter } from "next/navigation";
 
 const Login = () => {
+  const router = useRouter();
   const [bLoading, setBLoading] = useState(false);
   const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -23,7 +25,10 @@ const Login = () => {
       userName: data.email,
     })
       .then((res) => {
+        toast.success("Logged in successfully");
         console.log(res?.data);
+        localStorage.setItem("access_payload", JSON.stringify(res?.data));
+        router.push("/bookings");
       })
       .catch((e) => console.log(e))
       .finally(() => {
