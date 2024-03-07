@@ -2,6 +2,7 @@
 
 import { apiCall } from "@/api/api";
 import { NavButton } from "@/components/atoms/buttons";
+import { OrdersTable } from "@/components/molecules/tables";
 import { DashboardNavWrapper } from "@/components/molecules/wrappers";
 import React, { useEffect, useState } from "react";
 
@@ -29,6 +30,7 @@ function Bookings() {
         extraText="Create and monitor"
         button={<NavButton text="Generate report" action={setGenerateReport} />}
       />
+      <OrdersTable />
     </div>
   );
 }
