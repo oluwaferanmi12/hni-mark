@@ -22,7 +22,9 @@ const Login = () => {
       password: data.password,
       userName: data.email,
     })
-      .then((res) => {})
+      .then((res) => {
+        console.log(res?.data);
+      })
       .catch((e) => console.log(e))
       .finally(() => {
         setBLoading(false);
@@ -33,24 +35,26 @@ const Login = () => {
       <div className="mb-8">
         <FormHeaderText text="Login" />
       </div>
-      <GInput
-        label="Email"
-        placeholder="Enter email"
-        type="text"
-        name="email"
-      />
-      <GInput
-        label="Password"
-        placeholder="Enter password"
-        type="password"
-        name="password"
-      />
-      <Link href={"/forgot-password"}>
-        <span className="text-[#667085] font-semibold font-roboto underline">
-          Forgot Password?
-        </span>
-      </Link>
-      <FormSubmitButton text="Login" disabled={bLoading} />
+      <form onSubmit={handleLogin}>
+        <GInput
+          label="Email"
+          placeholder="Enter email"
+          type="text"
+          name="email"
+        />
+        <GInput
+          label="Password"
+          placeholder="Enter password"
+          type="password"
+          name="password"
+        />
+        <Link href={"/forgot-password"}>
+          <span className="text-[#667085] font-semibold font-roboto underline">
+            Forgot Password?
+          </span>
+        </Link>
+        <FormSubmitButton text="Login" disabled={bLoading} />
+      </form>
 
       <div className="flex justify-center items-center">
         <p className="font-roboto mr-6">Don't have an account?</p>

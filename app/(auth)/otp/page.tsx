@@ -73,8 +73,9 @@ const OtpPage = () => {
       mode: "email",
     })
       .then((res) => {
-        console.log(res?.data);
+        toast.success("Otp validated successfully");
         localStorage.removeItem("businessPayload");
+        router.push("/login");
       })
       .catch((e) => {
         console.log(e);

@@ -5,7 +5,7 @@ export const ModalWrapper = ({ handleInactive }: ModalWrapperType) => {
   return (
     <div
       onClick={() => handleInactive(false)}
-      className="fixed h-screen w-screen z-50 "
+      className="fixed top-0 left-0 h-screen w-screen z-10"
       style={{ backgroundColor: "rgba(0, 0, 0, 0.5)" }}
     ></div>
   );
