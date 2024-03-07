@@ -5,11 +5,21 @@ import { useState, useEffect } from "react";
 
 export const OrdersTable = () => {
   const [tableLoading, setTableLoading] = useState(true);
-  const [orders, setOrders] = useState([]);
+  const [orders, setOrders] = useState<any>([]);
   const getOrders = () => {
     apiCall("/Orders", "get")
       .then((res) => {
-        setOrders(res?.data);
+        setOrders([
+          {
+            date: "23-10-1996",
+            name: "Olaitan Akinlade",
+            bDate: "20-10-2024",
+            cName: "20-10-2024",
+            model: "2023",
+            price: "NGN50,000.00",
+            bHours: "20hrs",
+          },
+        ]);
       })
       .catch((e) => {
         console.log(e);
