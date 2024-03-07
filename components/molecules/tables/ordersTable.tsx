@@ -128,7 +128,7 @@ export const OrdersTable = () => {
           <div>
             {orders.map((item, index) => {
               return (
-                <Row className="py-4 px-3 text-[#475467]">
+                <Row key={index} className="py-4 px-3 text-[#475467]">
                   <Col xs={tableFilter[0].size}>
                     <span>{item.date}</span>
                   </Col>

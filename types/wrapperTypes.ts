@@ -6,6 +6,6 @@ export interface NavTextWrapperType {
     pageActive: string;
 }
 
-export interface ModalWrapper {
+export interface ModalWrapperType {
     handleInactive: (val: boolean) => void
 }

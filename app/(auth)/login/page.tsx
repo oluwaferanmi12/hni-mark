@@ -62,7 +62,7 @@ const Login = () => {
       </form>
 
       <div className="flex justify-center items-center">
-        <p className="font-roboto mr-6">Don't have an account?</p>
+        <p className="font-roboto mr-6">Don&apos;t have an account?</p>
         <Link href={"/register"}>
           <div className="flex  items-center  px-6 rounded-lg py-3 border border-[#ACB2BD]">
             <span className="font-semibold text-[#0E0E0E]">Join Us</span>

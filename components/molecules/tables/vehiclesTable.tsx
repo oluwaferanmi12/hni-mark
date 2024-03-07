@@ -12,8 +12,6 @@ import reloadButton from "@/public/assets/svgs/reload.svg";
 import Image from "next/image";
 import threeDots from "@/public/assets/svgs/tdots.svg";
 
-
-
 const tableFilter = [
   { heading: "Date", size: 3 },
   { heading: "Name", size: 3 },
@@ -34,7 +32,6 @@ interface OrdersType {
   price: string;
   bHours: string;
 }
-
 
 export const VehiclesTable = () => {
   const [tableLoading, setTableLoading] = useState(true);
@@ -131,7 +128,7 @@ export const VehiclesTable = () => {
           <div>
             {orders.map((item, index) => {
               return (
-                <Row className="py-4 px-3 text-[#475467]">
+                <Row key={index} className="py-4 px-3 text-[#475467]">
                   <Col xs={tableFilter[0].size}>
                     <span>{item.date}</span>
                   </Col>

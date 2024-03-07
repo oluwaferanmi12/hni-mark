@@ -1,7 +1,7 @@
 export type { InputTextType } from "@/types/textTypes";
 export type {
   NavTextWrapperType,
-  //   ModalWrapperType,
+    ModalWrapperType,
 } from "@/types/wrapperTypes";
 export type { DashBoardNavType } from "@/types/dashboardNavType";
 export type { GeneralTextType } from "@/types/generalTextType";
