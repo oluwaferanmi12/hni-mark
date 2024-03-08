@@ -10,8 +10,8 @@ export interface GInputType {
 }
 
 interface OptionType{
-    value: string;
-    selectLabel: string;
+    id: string;
+    title: string;
 }
 
 export interface GSelectType {
@@ -21,5 +21,6 @@ export interface GSelectType {
     error?: string;
     passwordTypHandler?: (value: boolean) => void;
     inputError?: string;
-    options: OptionType[]
+    options: OptionType[];
+    optionDefaultText: string;
 }

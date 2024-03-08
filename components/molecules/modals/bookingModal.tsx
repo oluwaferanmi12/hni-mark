@@ -3,6 +3,8 @@ import React from "react";
 import Image from "next/image";
 import roundedAdd from "@/public/assets/svgs/bookingModalIcon.svg";
 import cancel from "@/public/assets/svgs/cancel.svg";
+import avatar from "@/public/assets/svgs/avatarReal.svg";
+import phone from "@/public/assets/svgs/phone.svg";
 
 export const BookingModal = ({ handleClose }: VehicleModalType) => {
   return (
@@ -16,6 +18,27 @@ export const BookingModal = ({ handleClose }: VehicleModalType) => {
             </span>
             <span onClick={() => handleClose(false)} className="cursor-pointer">
               <Image src={cancel} alt="" />
+            </span>
+          </div>
+          <div>
+            <p className="text-2xl text-[#1D1E1F] font-robotoCondensed font-semibold my-2">
+              Booking details
+            </p>
+            <p className="text-[#344054] my-3">User information</p>
+          </div>
+          <div>
+            <span className="bg-[#F9F9FA] rounded-lg  py-3 justify-between px-3 flex items-center text-[#344054]">
+              <span>
+                <Image src={avatar} alt="" />
+              </span>
+              <span>
+                <p className="text-[20px]">Olaitan Akinlade</p>
+                <p className="my-2">15 wakati adura street, lekki phase 1.</p>
+                <p>08106127172</p>
+              </span>
+              <span>
+                <Image src={phone} alt="" />
+              </span>
             </span>
           </div>
         </div>

@@ -13,6 +13,12 @@ import { toast } from "sonner";
 import { validateEmail } from "@/utils/emailValidate";
 import { AuthFormWrapper } from "@/components/molecules/wrappers";
 import { useRouter } from "next/navigation";
+import { GSelect } from "@/components/atoms/inputs/GSelect";
+
+interface ServiceType {
+  title: string;
+  id: string;
+}
 
 const Register = () => {
   const router = useRouter();
@@ -21,10 +27,12 @@ const Register = () => {
   const [phoneError, setPhoneError] = useState("");
   const [bNameError, setBNameError] = useState("");
   const [passwordError, setPasswordError] = useState("");
+  const [services, setServices] = useState<ServiceType[]>([]);
+  const [serviceError, setServiceError] = useState("");
 
   const getServices = () => {
     apiCall("Products/Services", "get").then((res) => {
-      console.log(res?.data);
+      setServices(res?.data);
     });
   };
 
@@ -53,6 +61,13 @@ const Register = () => {
       setPhoneError("");
     }
 
+    if (!data.serviceId) {
+      errorFound = 1;
+      setServiceError("A service id is required");
+    } else {
+      setServiceError("");
+    }
+
     if (!data.password) {
       errorFound = 1;
       setPasswordError("Password is required");
@@ -75,7 +90,6 @@ const Register = () => {
     }
     apiCall("Account/Business/Register", "post", {
       ...data,
-      serviceId: "d283999f-1d0e-4a24-9e61-b99f90b3bb48",
     })
       .then((res) => {
         localStorage.setItem(
@@ -124,6 +138,14 @@ const Register = () => {
           name="businessName"
           inputError={bNameError}
         />
+        <GSelect
+          label="Business Service"
+          name="serviceId"
+          options={services}
+          optionDefaultText="Please select a service..."
+          inputError={serviceError}
+        />
+
         <GInput
           label="Password"
           placeholder="Enter password"

@@ -6,6 +6,8 @@ export const GSelect = ({
   name,
   error = "",
   inputError,
+  options,
+  optionDefaultText,
 }: GSelectType) => {
   return (
     <div className="my-4">
@@ -16,10 +18,17 @@ export const GSelect = ({
         <select
           name={name}
           className={`w-full px-4  outline-none focus:border-hgrey100 focus:border-2 py-3 rounded-lg border ${
-            inputError ? "border-red-600" : "border-[#D0D5DD]"
+            inputError ? "border-red-600" : "border-[#D0D5DD] bg-transparent"
           } `}
         >
-          <option></option>
+          <option value="">{optionDefaultText}</option>
+          {options.map((item, index) => {
+            return (
+              <option value={item.id} key={index}>
+                {item.title}
+              </option>
+            );
+          })}
         </select>
       </span>
       <div className="text-red-400">{inputError}</div>
