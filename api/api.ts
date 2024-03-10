@@ -23,7 +23,7 @@ apiInstance.interceptors.response.use(function (response) {
     console.log("Error hereee", error)
     let errorVal = error?.response?.data?.message
     if (error?.response?.status === 401) {
-        // window.location.href = "/login";
+        window.location.href = "/login";
         localStorage.removeItem("access_payload")
         errorVal = "Unauthorized Access"
     }
