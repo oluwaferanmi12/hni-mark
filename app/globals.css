@@ -44,6 +44,14 @@ body {
   background-size: cover;
 }
 
+.cardBg {
+  background-image: url("../public/assets/svgs/wavy-background.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-color: #0A0A0A;
+}
+
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
