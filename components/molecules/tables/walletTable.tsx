@@ -9,7 +9,7 @@ export const WalletTable = () => {
   const [wallTransactions, setWallTransactions] = useState([]);
   return (
     <TableWrapper>
-      <Row>
+      <Row gutter={{ lg:20 }} className="mb-4">
         <Col xs={8}>
           <PatternCard label="Available Balance" moneyValue="NGN 200,000.00" />
         </Col>

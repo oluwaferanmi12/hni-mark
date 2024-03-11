@@ -8,7 +8,7 @@ export const PatternCard = ({
   moneyValue: string;
 }) => {
   return (
-    <div className="cardBg w-full rounded-lg px-4 h-[200px] flex justify-center flex-col">
+    <div className="cardBg w-full rounded-lg px-8 h-[200px] flex justify-center flex-col">
       <p className="text-[#E6E6F3] font-robotoCondensed text-[20px]">
         {label.toUpperCase()}
       </p>
