@@ -10,3 +10,4 @@ export type { FormSubmitButtonType } from "@/types/FormSubmitButtonType";
 export type { RegisterType } from "@/types/registrationType";
 export type { NavButtonType } from "@/types/buttonTypes";
 export type { GSelectType } from "@/types/GInputType";
+export type { walletType } from "@/types/apiTypes";

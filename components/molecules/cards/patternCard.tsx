@@ -12,7 +12,9 @@ export const PatternCard = ({
       <p className="text-[#E6E6F3] font-robotoCondensed text-[20px]">
         {label.toUpperCase()}
       </p>
-      <p className="mt-4 text-4xl text-white font-semibold">{moneyValue}</p>
+      <p className="mt-4 text-4xl text-white font-semibold">
+        {moneyValue ? moneyValue : ""}
+      </p>
     </div>
   );
 };
