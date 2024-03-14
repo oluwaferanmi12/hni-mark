@@ -14,6 +14,7 @@ export const WalletTable = () => {
   useEffect(() => {
     apiCall("Wallet", "get")
       .then((res) => {
+        setWalletDetails(res?.data);
         console.log(res?.data);
       })
       .catch((e) => {
@@ -26,7 +27,7 @@ export const WalletTable = () => {
         <Col xs={8}>
           <PatternCard
             label="Available Balance"
-            moneyValue={walletDetails?.amount}
+            moneyValue={walletDetails?.amount ?? ""}
           />
         </Col>
         <Col xs={16}>
