@@ -11,14 +11,18 @@ export const WalletTable = () => {
   const [tableLoading, setTableLoading] = useState(true);
   const [wallTransactions, setWallTransactions] = useState([]);
   const [walletDetails, setWalletDetails] = useState<walletType>();
+  const [initDataLoaded, setinitDataLoaded] = useState(false);
+
   useEffect(() => {
     apiCall("Wallet", "get")
       .then((res) => {
         setWalletDetails(res?.data);
-        console.log(res?.data);
       })
       .catch((e) => {
         console.log(e);
+      })
+      .finally(() => {
+        setinitDataLoaded(true);
       });
   }, []);
   return (
@@ -28,6 +32,7 @@ export const WalletTable = () => {
           <PatternCard
             label="Available Balance"
             moneyValue={walletDetails?.amount ?? ""}
+            loaded={initDataLoaded}
           />
         </Col>
         <Col xs={16}>
